@@ -7,6 +7,7 @@ module ActiveRecord::Import
 
   def self.base_adapter(adapter)
     case adapter
+    when 'mysql2_makara' then 'mysql2'
     when 'mysqlspatial' then 'mysql'
     when 'mysql2spatial' then 'mysql2'
     when 'spatialite' then 'sqlite3'
@@ -14,7 +15,7 @@ module ActiveRecord::Import
     else adapter
     end
   end
-  
+
   # Loads the import functionality for a specific database adapter
   def self.require_adapter(adapter)
     require File.join(AdapterPath,"/abstract_adapter")
